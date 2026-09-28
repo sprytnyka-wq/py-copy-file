@@ -11,6 +11,7 @@ def copy_file(command: str) -> None:
     if source == destination:
         return
 
-    with open(source, "r") as file_in, open(destination, "w") as file_out:
-        content = file_in.read()
-        file_out.write(content)
+    with (open(source, "r") as source_file,
+          open(destination, "w") as destination_file):
+        content = source_file.read()
+        destination_file.write(content)
