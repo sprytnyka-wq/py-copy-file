@@ -10,7 +10,10 @@ def copy_file(command: str) -> None:
     if source == destination:
         return
 
-    with (open(source, "r") as source_file,
-          open(destination, "w") as destination_file):
-        content = source_file.read()
-        destination_file.write(content)
+    try:
+        with (open(source, "r") as source_file,
+              open(destination, "w") as destination_file):
+            content = source_file.read()
+            destination_file.write(content)
+    except FileNotFoundError:
+        print("nie znaleziono pliku")
